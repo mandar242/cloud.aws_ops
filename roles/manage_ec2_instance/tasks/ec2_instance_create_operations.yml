@@ -23,7 +23,7 @@
       register: key_info_result
 
     - debug:
-        msg: "received key pair name {{ manage_ec2_instance_key_name }}"
+        msg: "received key pair name {{ manage_ec2_instance_key_name }}  xyz"
 
     - name: Create new key pair
       amazon.aws.ec2_key:
