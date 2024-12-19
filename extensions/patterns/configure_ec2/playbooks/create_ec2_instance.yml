@@ -70,6 +70,7 @@
         manage_ec2_instance_associate_security_groups: "{{ [sg_name] }}"
         manage_ec2_instance_associate_eip: "{{ create_external_access_resources }}"
         manage_ec2_instance_instance_tags: "{{ instance_tags | default('{}', true) | from_json }}"
+        manage_ec2_instance_key_name: "{{ manage_ec2_instance_key_name | default(omit) }}"
 
     - name: Warn if key does not exist
       ansible.builtin.debug:
