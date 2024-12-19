@@ -22,13 +22,16 @@
           - "{{ manage_ec2_instance_key_name }}"
       register: key_info_result
 
+    - debug:
+        msg: "received key pair name {{ manage_ec2_instance_key_name }}"
+
     - name: Create new key pair
       amazon.aws.ec2_key:
         name: "{{ manage_ec2_instance_key_name }}"
         state: present
       when: key_info_result.keypairs | length == 0
       register: ec2_instance_manage_key_pair_result
-      no_log: true
+      # no_log: true
 
 - name: Create EC2 instance with provided configuration
   amazon.aws.ec2_instance:
